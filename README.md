@@ -12,18 +12,21 @@ Cela permet d'avoir une instance Kali linux avec une taille optimisée en foncti
 
 ## Pré-requis
 
-Les paquets python-pip3 sont requis pour installer docker-compose.
+Les paquets python3-pip sont requis pour installer docker-compose.
 ```bash
-sudo apt update -y && sudo apt install python-pip3
+sudo apt update -y && sudo apt install python-pip
 ```
 
 Pour l'installation de docker, nous reprenons ces lignes de commandes basées sur le site officiel de kali.
 
 ```bash
 sudo apt update -y
-sudo apt install -y docker.io
+sudo apt install -y docker.io docker-compose
 sudo systemctl enable docker --now
 sudo usermod -aG docker $USER
+# @Todo verify if it's still a requirement
+#sudo gpasswd -a $USER docker
+#newgrp docker
 ```
 
 Cela permet théoriquement de pouvoir exécuter docker sans avoir besoin d'utiliser sudo.
@@ -57,8 +60,9 @@ docker build -t kali .
 Créer des conteneurs
 
 ```
-pip3 install docker-compose --user
-docker-compose run kali
+sudo chown $USER /var/run/docker.sock
+# La commande rm permet de supprimer le conteneur une fois le terminal de kali quitté
+sudo docker-compose run --rm kali
 ```
 
 Créer des alias
@@ -75,4 +79,3 @@ Vous pouvez également modifier le fichier Dockerfile pour obtenir plus d'outils
 
 
 Pour plus d'information sur l'installation, vous pouvez voir le tutoriel original à l'adresse suivante: https://thibaud-robin.fr/articles/docker-kali/
-

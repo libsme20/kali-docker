@@ -5,6 +5,6 @@ services:
     image: "kali"
     volumes:
       - /mnt/share-kali:/share
-      - /mnt/share-kali/.zsh_history:/root/.zsh_history
-      - /mnt/share-kali/.bash_history:/root/.bash_history
+#      - /mnt/share-kali/.zsh_history:/root/.zsh_history
+#      - /mnt/share-kali/.bash_history:/root/.bash_history
     network_mode: host

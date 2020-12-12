@@ -75,5 +75,3 @@ Vous pouvez également modifier le fichier Dockerfile pour obtenir plus d'outils
 
 
 Pour plus d'information sur l'installation, vous pouvez voir le tutoriel original à l'adresse suivante: https://thibaud-robin.fr/articles/docker-kali/
-
-Vous pouvez également utiliser gratuitement le projet Exegol: https://github.com/ShutdownRepo/Exegol

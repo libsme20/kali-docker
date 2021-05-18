@@ -1,10 +1,10 @@
 version: '3.4'
 
 services:
-  kali:
-    image: "kali"
+  kali-docker:
+    image: "kali-docker"
     volumes:
-      - /mnt/share-kali:/share
-      - /mnt/share-kali/.zsh_history:/root/.zsh_history
-      - /mnt/share-kali/.bash_history:/root/.bash_history
+      - /home/oppida/shared/shared:/root/share
+      - /home/oppida/shared/shared/.zsh_history:/root/.zsh_history
+      - /home/oppida/shared/shared/.bash_history:/root/.bash_history
     network_mode: host

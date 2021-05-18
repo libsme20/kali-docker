@@ -14,7 +14,7 @@ Cela permet d'avoir une instance Kali linux avec une taille optimisée en foncti
 
 Les paquets python-pip3 sont requis pour installer docker-compose.
 ```bash
-sudo apt update -y && sudo apt install python-pip3
+sudo apt update -y && sudo apt install python3-pip
 ```
 
 Pour l'installation de docker, nous reprenons ces lignes de commandes basées sur le site officiel de kali.
@@ -43,28 +43,30 @@ cd kali-docker
 Créer et partager un lot de commandes utiles dans l'historique bash et/ou ssh qui peuvent être réutilisées.
 
 ```
-sudo mkdir /mnt/kali-share
-sudo cp conf/interesting_cmd /mnt/kali-share/.zsh_history
-sudo cp conf/interesting_cmd /mnt/kali-share/.bash_history
+HOST_SHARED_PATH=/mnt/kali-share
+sudo mkdir -p $HOST_SHARED_PATH
+sed -i "s|/mnt/kali-share|$HOST_SHARED_PATH|g" docker-compose.yml
+sudo cp conf/interesting_cmd $HOST_SHARED_PATH/.zsh_history
+sudo cp conf/interesting_cmd $HOST_SHARED_PATH/.bash_history
 ```
 
 Construire l'image
 
 ```bash
-docker build -t kali .
+docker build -t kali-docker .
 ```
 
 Créer des conteneurs
 
 ```
 pip3 install docker-compose --user
-docker-compose run kali
+docker-compose run kali-docker
 ```
 
 Créer des alias
 
 ```bash
-KALI_BASEPATH=$HOME/Documents/docker-containers
+KALI_BASEPATH=$HOME/shared
 echo "alias kali='docker-compose -f $KALI_BASEPATH/kali-docker/docker-compose.yml run kali-docker'" >> .bashrc && source .bashrc
 ```
 

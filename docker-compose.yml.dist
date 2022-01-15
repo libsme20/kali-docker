@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  kali-docker:
+    image: "kali-docker"
+    volumes:
+      - /home/<user>/shared/shared:/root/share
+      - /home/<user>/shared/shared/.zsh_history:/root/.zsh_history
+      - /home/<user>/shared/shared/.bash_history:/root/.bash_history
+    network_mode: host

@@ -12,14 +12,13 @@ WORKDIR /root
 RUN apt -y update --fix-missing && apt -y upgrade && apt -y autoremove && apt autoclean
 
 # Basic tools
-RUN apt install iputils-ping nano openssh-server net-tools man apt-utils bsdmainutils zip unzip curl vim wget   -y
+RUN apt install iputils-ping nano openssh-server net-tools man apt-utils bsdmainutils zip unzip curl vim wget iproute2 -y
 
 # Zsh installation and configuration
 RUN apt install zsh zsh-autosuggestions -y 
 
 # Installation of all pentest tools of kali-linux
 RUN apt install kali-linux-large -y
-
 
 # History
 ADD ./conf/interesting_cmd /root/.zsh_history
